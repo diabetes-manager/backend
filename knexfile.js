@@ -1,37 +1,47 @@
+// Update with your config settings.
+const localPg = {
+  host: 'localhost',
+  database: 'users',
+  user: 'test',
+  password: 'pass',
+};
+const productionDbConnection = process.env.DATABASE_URL || localPg;
+
 module.exports = {
   development: {
-    client: 'pg',
-    connection:'postgres://localhost/diabetes',
+    client: 'sqlite3',
+    connection: {
+      filename: './db/diabetes.db3',
+    },
+    useNullAsDefault: true,
     migrations: {
-      directory: './db/migrations'
+      directory: './db/migrations',
     },
     seeds: {
-      directory: './db/seeds/dev'
+      directory: './db/seeds',
     },
-    useNullAsDefault: true
   },
-
-  test: {
-    client: 'pg',
-    connection:'postgres://localhost/diabetes_test',
+  testing: {
+    client: 'sqlite3',
+    connection: {
+      filename: './db/diabetes-test.db3',
+    },
+    useNullAsDefault: true,
     migrations: {
-      directory: './db/migrations'
+      directory: './db/migrations',
     },
     seeds: {
-      directory: './db/seeds/test'
+      directory: './db/seeds',
     },
-    useNullAsDefault: true
   },
-
   production: {
     client: 'pg',
-    connection: process.env.DATABASE_URL,
+    connection: productionDbConnection, // could be an object or a string
     migrations: {
-      directory: './db/migrations'
+      directory: './db/migrations',
     },
     seeds: {
-      directory: './db/seeds/production'
+      directory: './db/seeds',
     },
-    useNullAsDefault: true
-  }
-}
+  },
+};

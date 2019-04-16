@@ -5,7 +5,7 @@ exports.up = function(knex) {
 
         tbl.timestamp('timestamp').defaultTo(knex.fn.now());
 
-        tbl.float('measurment').notNullable();
+        tbl.float('measurement').notNullable();
 
         tbl
         .integer('user_id')

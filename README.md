@@ -1,20 +1,21 @@
-# DiabetesManager v1.0.0
+# Databetes v1.0.0
 
-Api for Diabetes Manager storing and getting information from the database.
+Databetes API docs
 
 - [Root](#root)
-	- [/api](#/api)
+	- [GET /api](#get-/api)
 	
 - [Users](#users)
-	- [/api/users/{id}](#/api/users/{id})
-	- [/api/users](#/api/users)
-	- [/api/users](#/api/users)
+	- [GET /api/users/{id}](#get-/api/users/{id})
+	- [GET /api/users](#get-/api/users)
+	- [POST /api/users](#post-/api/users)
+	- [DELETE /api/users/:id](#delete-/api/users/:id)
 	
 
 
 # Root
 
-## /api
+## GET /api
 
 
 
@@ -42,7 +43,7 @@ Example:
 ```
 # Users
 
-## /api/users/{id}
+## GET /api/users/{id}
 
 
 
@@ -78,7 +79,7 @@ Response
        }
    ]
 ```
-## /api/users
+## GET /api/users
 
 
 
@@ -114,7 +115,7 @@ Response
        }...
    ]
 ```
-## /api/users
+## POST /api/users
 
 
 
@@ -147,6 +148,41 @@ Response
 HTTP/1.1 400
 {
     "message":"Username exists, please choose another"
+}
+```
+## DELETE /api/users/:id
+
+
+
+	DELETE /api/users/:id
+
+
+### Examples
+
+Request
+
+```
+axios.delete('/api/users/{id}');
+```
+
+### Success Response
+
+Response
+
+```
+    HTTP/1.1 200
+{
+       "message":"{1}, user has been deleted"
+   }
+```
+### Error Response
+
+Response
+
+```
+HTTP/1.1 400
+{
+    "message":"Sorry, user does not exist"
 }
 ```
 

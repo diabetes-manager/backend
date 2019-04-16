@@ -1,17 +1,21 @@
 {
-    "name": "DiabetesManager",
+    "name": "Databetes",
     "version": "1.0.0",
-    "description": "Api for Diabetes Manager storing and getting information from the database.",
+    "description": "Databetes API docs",
     "title": "Api Documentation",
     "url": "http://localhost:3333",
     "sampleUrl": "http://localhost:3333",
     "header": {
-        "title": "Diabetes Manager",
+        "title": "Databetes Manager",
         "filename": "header.md"
+    },
+    "footer": {
+        "filename":"footer.md"
     },
     "template": {
         "withGenerator": true,
         "withCompare": true
     }
 }
-  
+
+

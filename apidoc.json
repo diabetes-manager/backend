@@ -1,0 +1,17 @@
+{
+    "name": "MyHouse",
+    "version": "1.0.0",
+    "description": "Api for MyHouse project storing and getting information from the sqlite database.",
+    "title": "Api Docs",
+    "url": "http://localhost:3333",
+    "sampleUrl": "http://localhost:3333",
+    "header": {
+        "title": "Api",
+        "filename": "header.md"
+    },
+    "template": {
+        "withGenerator": true,
+        "withCompare": true
+    }
+}
+  

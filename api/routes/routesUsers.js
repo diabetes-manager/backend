@@ -24,7 +24,7 @@ const server = express.Router();
  * @apiSuccess {number} weight            User weight
  * @apiSuccess {number} age            User age
  * @apiSuccess {string} gender            User gender
- * @apiSuccess {number} carb_insulin            User Carb to Insulin ratio
+ * @apiSuccess {number} carb_insulin            User Carb to Insulin ratio (temporary)
  * @apiSuccessExample {json} Response
  *  [
  *      {
@@ -75,7 +75,7 @@ server.get('/', async (req, res) => {
  * @apiSuccess {number} weight            User weight
  * @apiSuccess {number} age            User age
  * @apiSuccess {string} gender            User gender
- * @apiSuccess {number} carb_insulin            User Carb to Insulin ratio
+ * @apiSuccess {number} carb_insulin            User Carb to Insulin ratio (temporary)
  * @apiSuccessExample {json} Response
  *  [
  *      {
@@ -130,7 +130,7 @@ server.get('/:id', async (req, res) => {
  * @apiSuccess {number} weight            User weight
  * @apiSuccess {number} age            User age
  * @apiSuccess {string} gender            User gender
- * @apiSuccess {number} carb_insulin            User Carb to Insulin ratio
+ * @apiSuccess {number} carb_insulin            User Carb to Insulin ratio (temporary)
  * @apiSuccessExample {json} Response
  *      HTTP/1.1 201
  *  {
@@ -170,8 +170,7 @@ server.post('/', async (req, res) => {
  * @apiExample Request
  * axios.delete('/api/users/{id}');
  *
- * @apiSuccess {id} id            User Id
- * @apiSuccess {number} username            Username (required)
+ * @apiSuccess {id} id            User Id deleted
  * @apiSuccessExample {json} Response
  *      HTTP/1.1 200
  *  {

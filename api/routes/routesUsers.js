@@ -5,21 +5,41 @@ const db = require('../../knexConfig.js');
 const server = express.Router();
 
 /**
- * @api {get} / Get Root
+ * @api {get} /api/users Get Users
  * @apiVersion 1.0.0
  * @apiName Get
- * @apiGroup Root
+ * @apiGroup Users
  *
  * @apiExample Request example:
- * axios.get('/');
+ * axios.get('/api/users');
  *
  * @apiUse Error
  *
- * @apiSuccess {String} message            Hello!
+ * @apiSuccess {id} id            User Id
+ * @apiSuccess {string} username            Username
+ * @apiSuccess {number} bg_high            User Bg_high
+ * @apiSuccess {number} bg_low            User Bg_low
+ * @apiSuccess {number} bg_target_top            User Bg_target_top
+ * @apiSuccess {number} bg_target_bottom            User Bg_target_bottom
+ * @apiSuccess {number} height            User height
+ * @apiSuccess {number} weight            User weight
+ * @apiSuccess {number} age            User age
+ * @apiSuccess {string} gender            User gender
+ * @apiSuccess {number} carb_insulin            User Carb to Insulin ratio
  * @apiSuccessExample {json} Example:
  *  [
  *      {
-            "message": "Hello!"
+            "id": 1,
+            "username": "tanka",
+            "bg_high": 7,
+            "bg_low": 3,
+            "bg_target_top": 10,
+            "bg_target_bottom": 1,
+            "height": null,
+            "weight": null,
+            "age": null,
+            "gender": null,
+            "carb_insulin": null
         }...
     ]
 *

@@ -1,29 +1,20 @@
 const express = require('express');
+const cors = require('cors');
 const helmet = require('helmet');
-const routesUsers = require('./routes/routesUsers');
+const path = require( "path" );
 
-
+const configureRoutes = require( "./routes/router.js" );
 
 const server = express();
 
 server.use(helmet());
+server.use(cors());
 server.use(express.json());
+// server.use(bodyParser.urlencoded({ extended: true }));
 
-server.use('/users', routesUsers);
-
-
-
-
-
-// GET base route, say hello
-server.get('/', async (req, res) => {
-    res.status(200).json({ message:"Hello!" })
-})
-
+configureRoutes( server );
 
 
 
 module.exports = server;
-
-
 

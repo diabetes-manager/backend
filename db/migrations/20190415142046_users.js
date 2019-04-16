@@ -8,9 +8,9 @@ exports.up = function(knex) {
 
         user.integer('bg_low').notNullable();
         
-        user.integer('bg_target_top').notNullable();
+        user.integer('bg_target_top').defaultTo(7);
         
-        user.integer('bg_target_bottom').notNullable();
+        user.integer('bg_target_bottom').defaultTo(3);
         
         user.integer('height')
         

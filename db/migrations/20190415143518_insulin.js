@@ -11,7 +11,7 @@ exports.up = function(knex) {
 
         tbl.string('brand', 255).notNullable();
 
-        tbl.integer('duration').notNullable();
+        tbl.integer('duration')
 
         tbl.integer('basal_rate');
 

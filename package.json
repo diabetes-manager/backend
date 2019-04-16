@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "server": "nodemon index.js",
-    "api-docs": "apidoc -f .js -i api/ -o apidoc/",
-    "build-docs": "apidoc-markdown -p ./apidoc/ -o README.md",
+    "api-docs": "apidoc -f .js -i api/ -o doc/",
+    "build-docs": "apidoc-markdown -p ./doc/ -o README.md",
     "build-api": "npm-run-all api-docs build-docs"
   },
   "repository": "git@github.com:diabetes-manager/backend.git",

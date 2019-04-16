@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "server": "nodemon index.js",
     "api-docs": "apidoc -f .js -i api/ -o docs/",
     "build-docs": "apidoc-markdown -p ./docs/ -o README.md",

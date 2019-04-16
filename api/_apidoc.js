@@ -14,14 +14,14 @@
  * @apiDefine Error
  * @apiVersion 1.0.0
  *
- * @apiError (Error XXX) {Number} status The status code response.
- * @apiError (Error XXX) {String} message Error message
+ * @apiError (Error {num}) {Number}     status      The status code response
+ * @apiError (Error {num}) {String}     message     Error message
  *
- * @apiErrorExample {json} Error Example:
- *      ERROR XXX
+ * @apiErrorExample {json} Error structure for all endpoints
+ *      ERROR {num}
  *      {
- *          "status": xxx,
- *          "message": "Some Error Message"
+ *          "status": {num},
+ *          "message": {error_message}
  *      }
  *
  */

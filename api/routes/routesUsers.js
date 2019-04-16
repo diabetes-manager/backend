@@ -4,16 +4,15 @@ const db = require('../../knexConfig.js');
 
 const server = express.Router();
 
+
 /**
- * @api {get} /api/users Get Users
+ * @api {get} /api/users /api/users
  * @apiVersion 1.0.0
- * @apiName Get
+ * @apiName Get Users
  * @apiGroup Users
  *
- * @apiExample Request example:
+ * @apiExample Request
  * axios.get('/api/users');
- *
- * @apiUse Error
  *
  * @apiSuccess {id} id            User Id
  * @apiSuccess {string} username            Username
@@ -26,7 +25,7 @@ const server = express.Router();
  * @apiSuccess {number} age            User age
  * @apiSuccess {string} gender            User gender
  * @apiSuccess {number} carb_insulin            User Carb to Insulin ratio
- * @apiSuccessExample {json} Example:
+ * @apiSuccessExample {json} Response
  *  [
  *      {
             "id": 1,
@@ -46,7 +45,6 @@ const server = express.Router();
 *
 */
 
-// GET /users, all the users
 server.get('/', async (req, res) => {
     try {
         const users = await db('users');
@@ -57,7 +55,47 @@ server.get('/', async (req, res) => {
 });
 
 
-// GET /users/:id, get specific user by id
+
+/**
+ * @api {get} /api/users/:id    /api/users/{id}
+ * @apiVersion 1.0.0
+ * @apiName Get User
+ * @apiGroup Users
+ *
+ * @apiExample Request
+ * axios.get('/api/users/{id}');
+ *
+ * @apiSuccess {id} id            User Id
+ * @apiSuccess {string} username            Username
+ * @apiSuccess {number} bg_high            User Bg_high
+ * @apiSuccess {number} bg_low            User Bg_low
+ * @apiSuccess {number} bg_target_top            User Bg_target_top
+ * @apiSuccess {number} bg_target_bottom            User Bg_target_bottom
+ * @apiSuccess {number} height            User height
+ * @apiSuccess {number} weight            User weight
+ * @apiSuccess {number} age            User age
+ * @apiSuccess {string} gender            User gender
+ * @apiSuccess {number} carb_insulin            User Carb to Insulin ratio
+ * @apiSuccessExample {json} Response
+ *  [
+ *      {
+            "id": 1,
+            "username": "tanka",
+            "bg_high": 7,
+            "bg_low": 3,
+            "bg_target_top": 10,
+            "bg_target_bottom": 1,
+            "height": null,
+            "weight": null,
+            "age": null,
+            "gender": null,
+            "carb_insulin": null
+        }
+    ]
+*
+*
+*/
+
 server.get('/:id', async (req, res) => {
     try {
         const userById = await db('users').where({ id:req.params.id }).first();
@@ -72,7 +110,42 @@ server.get('/:id', async (req, res) => {
 });
 
 
-// POST /users
+
+/**
+ * @api {post} /api/users    /api/users
+ * @apiVersion 1.0.0
+ * @apiName Post User
+ * @apiGroup Users
+ *
+ * @apiExample Request
+ * axios.post('/api/users');
+ *
+ * @apiSuccess {id} id            User Id
+ * @apiSuccess {string} username            Username (required)
+ * @apiSuccess {number} bg_high            User Bg_high (required)
+ * @apiSuccess {number} bg_low            User Bg_low (required)
+ * @apiSuccess {number} bg_target_top            User Bg_target_top (required)
+ * @apiSuccess {number} bg_target_bottom            User Bg_target_bottom (required)
+ * @apiSuccess {number} height            User height 
+ * @apiSuccess {number} weight            User weight
+ * @apiSuccess {number} age            User age
+ * @apiSuccess {string} gender            User gender
+ * @apiSuccess {number} carb_insulin            User Carb to Insulin ratio
+ * @apiSuccessExample {json} Response
+ *      HTTP/1.1 201
+ *  {
+        "message":"Thank you, user has been added"
+    }
+ * @apiError UsernameExists     Usernames must be unique
+ * @apiErrorExample Response
+ *      HTTP/1.1 400
+ *      {
+ *          "message":"Username exists, please choose another"
+ *      }
+*
+*
+*/
+
 server.post('/', async (req, res) => {
     if(!req.body.username || !req.body.bg_high || !req.body.bg_low || !req.body.bg_target_top || !req.body.bg_target_bottom) {
         return res.status(400).json({ message:"Please include username, bg high and bg low" 

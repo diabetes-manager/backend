@@ -5,15 +5,13 @@ const express = require('express');
 const server = express.Router();
 
 /**
- * @api {get} /api Get ApiRoot
+ * @api {get} /api /api
  * @apiVersion 1.0.0
  * @apiName Get
- * @apiGroup ApiRoot
+ * @apiGroup Root
  *
- * @apiExample Request example:
+ * @apiExample Request Structure
  * axios.get('/api');
- *
- * @apiUse Error
  *
  * @apiSuccess {String} message            Hello!
  * @apiSuccessExample {json} Example:

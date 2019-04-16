@@ -1,12 +1,12 @@
 {
-    "name": "MyHouse",
+    "name": "DiabetesManager",
     "version": "1.0.0",
-    "description": "Api for MyHouse project storing and getting information from the sqlite database.",
-    "title": "Api Docs",
+    "description": "Api for Diabetes Manager storing and getting information from the database.",
+    "title": "Api Documentation",
     "url": "http://localhost:3333",
     "sampleUrl": "http://localhost:3333",
     "header": {
-        "title": "Api",
+        "title": "Diabetes Manager",
         "filename": "header.md"
     },
     "template": {

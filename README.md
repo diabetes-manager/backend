@@ -1,18 +1,20 @@
-# MyHouse v1.0.0
+# DiabetesManager v1.0.0
 
-Api for MyHouse project storing and getting information from the sqlite database.
+Api for Diabetes Manager storing and getting information from the database.
 
-- [ApiRoot](#apiroot)
-	- [Get ApiRoot](#get-apiroot)
+- [Root](#root)
+	- [/api](#/api)
 	
 - [Users](#users)
-	- [Get Users](#get-users)
+	- [/api/users/{id}](#/api/users/{id})
+	- [/api/users](#/api/users)
+	- [/api/users](#/api/users)
 	
 
 
-# ApiRoot
+# Root
 
-## Get ApiRoot
+## /api
 
 
 
@@ -21,7 +23,7 @@ Api for MyHouse project storing and getting information from the sqlite database
 
 ### Examples
 
-Request example:
+Request Structure
 
 ```
 axios.get('/api');
@@ -38,20 +40,45 @@ Example:
        }...
    ]
 ```
-### Error Response
-
-Error Example:
-
-```
-ERROR XXX
-{
-    "status": xxx,
-    "message": "Some Error Message"
-}
-```
 # Users
 
-## Get Users
+## /api/users/{id}
+
+
+
+	GET /api/users/:id
+
+
+### Examples
+
+Request
+
+```
+axios.get('/api/users/{id}');
+```
+
+### Success Response
+
+Response
+
+```
+[
+    {
+           "id": 1,
+           "username": "tanka",
+           "bg_high": 7,
+           "bg_low": 3,
+           "bg_target_top": 10,
+           "bg_target_bottom": 1,
+           "height": null,
+           "weight": null,
+           "age": null,
+           "gender": null,
+           "carb_insulin": null
+       }
+   ]
+```
+## /api/users
 
 
 
@@ -60,7 +87,7 @@ ERROR XXX
 
 ### Examples
 
-Request example:
+Request
 
 ```
 axios.get('/api/users');
@@ -68,7 +95,7 @@ axios.get('/api/users');
 
 ### Success Response
 
-Example:
+Response
 
 ```
 [
@@ -87,15 +114,39 @@ Example:
        }...
    ]
 ```
-### Error Response
+## /api/users
 
-Error Example:
+
+
+	POST /api/users
+
+
+### Examples
+
+Request
 
 ```
-ERROR XXX
+axios.post('/api/users');
+```
+
+### Success Response
+
+Response
+
+```
+    HTTP/1.1 201
 {
-    "status": xxx,
-    "message": "Some Error Message"
+       "message":"Thank you, user has been added"
+   }
+```
+### Error Response
+
+Response
+
+```
+HTTP/1.1 400
+{
+    "message":"Username exists, please choose another"
 }
 ```
 

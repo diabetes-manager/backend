@@ -6,7 +6,7 @@ const server = express.Router();
 
 
 /**
- * @api {get} /api/users /api/users
+ * @api {get} /api/users GET /api/users
  * @apiVersion 1.0.0
  * @apiName Get Users
  * @apiGroup Users
@@ -57,7 +57,7 @@ server.get('/', async (req, res) => {
 
 
 /**
- * @api {get} /api/users/:id    /api/users/{id}
+ * @api {get} /api/users/:id    GET /api/users/{id}
  * @apiVersion 1.0.0
  * @apiName Get User
  * @apiGroup Users
@@ -112,7 +112,7 @@ server.get('/:id', async (req, res) => {
 
 
 /**
- * @api {post} /api/users    /api/users
+ * @api {post} /api/users    POST /api/users
  * @apiVersion 1.0.0
  * @apiName Post User
  * @apiGroup Users
@@ -142,8 +142,6 @@ server.get('/:id', async (req, res) => {
  *      {
  *          "message":"Username exists, please choose another"
  *      }
-*
-*
 */
 
 server.post('/', async (req, res) => {
@@ -163,8 +161,30 @@ server.post('/', async (req, res) => {
 });
 
 
+/**
+ * @api {delete} /api/users/:id    DELETE /api/users/:id
+ * @apiVersion 1.0.0
+ * @apiName Remove User
+ * @apiGroup Users
+ *
+ * @apiExample Request
+ * axios.delete('/api/users/{id}');
+ *
+ * @apiSuccess {id} id            User Id
+ * @apiSuccess {number} username            Username (required)
+ * @apiSuccessExample {json} Response
+ *      HTTP/1.1 200
+ *  {
+        "message":"{1}, user has been deleted"
+    }
+ * @apiError UsernameNotExists     Username must exist to delete
+ * @apiErrorExample Response
+ *      HTTP/1.1 400
+ *      {
+ *          "message":"Sorry, user does not exist"
+ *      }
+*/
 
-// Delete a user from the usersdb
 server.delete('/:id', async (req, res) => {
     const checkUserExists = await db('users').where({ id:req.params.id }).first();
     if(!checkUserExists) {

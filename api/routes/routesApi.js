@@ -1,6 +1,8 @@
 const express = require('express');
 
-const server = express.Router();
+const server = express();
+
+server.use(express.json());
 
 /**
  * @api {get} /api      GET /api
@@ -15,15 +17,16 @@ const server = express.Router();
  * @apiSuccessExample {json} Example:
  *  [
  *      {
-            "message": "Hello!"
+            "greeting": "Hello!"
         }...
     ]
-*
-*
 */
 
-module.exports = server.get('/api', async (req, res) => {
-    res.status(200).json({ message:"Hello!" })
-})
+server.get('/', function (req, res) {
+    res.status(200).json({ greeting:'Hello!' });
+    // res.status(200).send('hello');
+});
+  
 
+module.exports = server
 

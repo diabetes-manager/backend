@@ -1,7 +1,7 @@
 // Update with your config settings.
 const localPg = {
   host: 'localhost',
-  database: 'diabetes',
+  // database: 'pg',
   user: 'test',
   password: 'pass',
 };
@@ -36,12 +36,12 @@ module.exports = {
   },
   production: {
     client: 'pg',
-    connection: productionDbConnection, // could be an object or a string
+    connection: productionDbConnection, 
     migrations: {
       directory: './db/migrations',
     },
     seeds: {
       directory: './db/seeds',
     },
-  },
+  }
 };

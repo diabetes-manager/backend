@@ -7,7 +7,8 @@
     "server": "nodemon index.js",
     "api-docs": "apidoc -f .js -i api/ -o docs/",
     "build-docs": "apidoc-markdown -p ./docs/ -o README.md",
-    "build-api": "npm-run-all api-docs build-docs"
+    "build-api": "npm-run-all api-docs build-docs",
+    "test": "cross-env DB_ENV=development jest --watch --verbose"
   },
   "repository": "git@github.com:diabetes-manager/backend.git",
   "author": "Frank Martinez <frankie.martinez@gmail.com>",
@@ -27,6 +28,11 @@
   },
   "devDependencies": {
     "cross-env": "^5.2.0",
-    "nodemon": "^1.18.11"
-  }
+    "jest": "^24.7.1",
+    "nodemon": "^1.18.11",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+		"testEnvironment": "node"
+	}
 }

@@ -6,14 +6,12 @@ exports.up = function(knex) {
         tbl.timestamp('timestamp').defaultTo(knex.fn.now());
 
         tbl.float('amount').notNullable();
+        
+        tbl.integer('duration')
 
         tbl.string('type', 255).notNullable();
 
         tbl.string('brand', 255).notNullable();
-
-        tbl.integer('duration')
-
-        tbl.integer('basal_rate');
 
         tbl
         .integer('user_id')

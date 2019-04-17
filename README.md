@@ -21,6 +21,12 @@ Databetes API docs
 	- [DELETE /api/users/:id](#delete-/api/users/:id)
 	- [PUT /api/users/{id}](#put-/api/users/{id})
 	
+- [bloodsugar](#bloodsugar)
+	- [DELETE /api/bloodsugar/:id](#delete-/api/bloodsugar/:id)
+	
+- [insulin](#insulin)
+	- [DELETE /api/insulin/:id](#delete-/api/insulin/:id)
+	
 
 
 # Bloodsugar
@@ -439,6 +445,80 @@ Response
 HTTP/1.1 400
 {
     "message":"Please include a user id to update"
+}
+```
+# bloodsugar
+
+## DELETE /api/bloodsugar/:id
+
+
+
+	DELETE /api/bloodsugar/:id
+
+
+### Examples
+
+Request
+
+```
+axios.delete('/api/bloodsugar/{id}');
+```
+
+### Success Response
+
+Response
+
+```
+    HTTP/1.1 200
+{
+       "message":"{1}, user has been deleted"
+   }
+```
+### Error Response
+
+Response
+
+```
+HTTP/1.1 400
+{
+    "message":"Sorry, user does not exist"
+}
+```
+# insulin
+
+## DELETE /api/insulin/:id
+
+
+
+	DELETE /api/insulin/:id
+
+
+### Examples
+
+Request
+
+```
+axios.delete('/api/insulin/{id}');
+```
+
+### Success Response
+
+Response
+
+```
+    HTTP/1.1 200
+{
+       "message":"{1}, user has been deleted"
+   }
+```
+### Error Response
+
+Response
+
+```
+HTTP/1.1 400
+{
+    "message":"Sorry, user does not exist"
 }
 ```
 

@@ -10,8 +10,8 @@ const server = express.Router();
 /**
  * @api {delete} /api/insulin/:id    DELETE /api/insulin/:id
  * @apiVersion 1.0.0
- * @apiName Remove User
- * @apiGroup insulin
+ * @apiName Remove Insulin by User
+ * @apiGroup Insulin
  *
  * @apiExample Request
  * axios.delete('/api/insulin/{id}');

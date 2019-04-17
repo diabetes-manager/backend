@@ -1,13 +1,13 @@
 # Databetes v1.0.0
 
-![Build Status](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiQkRsV1A5SnY2SXo0QmFuOFVNcndrSVNXQ0E2bnVMVndrcnNhMFVqMjNnRWZyVnd5S1d0ZlMwN1VzYTZNQ291ZktBQ2hDMmdqT2lSb3JPaGJkc2cwYWp3PSIsIml2UGFyYW1ldGVyU3BlYyI6ImVoNFlNMlJzd0JZNGZjOEMiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
-
 Databetes API docs
 
 - [Bloodsugar](#bloodsugar)
+	- [GET /api/bloodsugar/{id}](#get-/api/bloodsugar/{id})
 	- [POST /api/bloodsugar](#post-/api/bloodsugar)
 	
 - [Insulin](#insulin)
+	- [GET /api/insulin/{id}](#get-/api/insulin/{id})
 	- [POST /api/insulin](#post-/api/insulin)
 	
 - [Root](#root)
@@ -21,10 +21,47 @@ Databetes API docs
 	- [DELETE /api/users/:id](#delete-/api/users/:id)
 	- [PUT /api/users/{id}](#put-/api/users/{id})
 	
+- [bloodsugar](#bloodsugar)
+	- [DELETE /api/bloodsugar/:id](#delete-/api/bloodsugar/:id)
+	
+- [insulin](#insulin)
+	- [DELETE /api/insulin/:id](#delete-/api/insulin/:id)
+	
 
 
 # Bloodsugar
 
+## GET /api/bloodsugar/{id}
+
+
+
+	GET /api/bloodsugar/:id
+
+
+### Examples
+
+Request
+
+```
+axios.get('/api/bloodsugar/{id}');
+```
+
+### Success Response
+
+Response
+
+```
+[
+    {
+           "id": 1,
+           "timestamp": "2019-02-01T03:12:07Z",
+           "value": 109,
+           "below_threshold": null,
+           "prediction": null,
+           "user_id": 1
+       }...
+   ]
+```
 ## POST /api/bloodsugar
 
 
@@ -62,6 +99,38 @@ HTTP/1.1 400
 ```
 # Insulin
 
+## GET /api/insulin/{id}
+
+
+
+	GET /api/insulin/:id
+
+
+### Examples
+
+Request
+
+```
+axios.get('/api/insulin/{id}');
+```
+
+### Success Response
+
+Response
+
+```
+[
+    {
+           "id": 1,
+           "timestamp": "2019-02-01T03:21:53Z",
+           "amount": 15,
+           "duration": null,
+           "type": "slow acting",
+           "brand": "Humalog",
+           "user_id": 1
+       }...
+   ]
+```
 ## POST /api/insulin
 
 
@@ -335,7 +404,6 @@ HTTP/1.1 400
     "message":"Sorry, user does not exist"
 }
 ```
-<<<<<<< HEAD
 ## PUT /api/users/{id}
 
 
@@ -379,6 +447,78 @@ HTTP/1.1 400
     "message":"Please include a user id to update"
 }
 ```
+# bloodsugar
 
-=======
->>>>>>> d3544b8dc65e90ca331cf4474232b7d012fbe5f9
+## DELETE /api/bloodsugar/:id
+
+
+
+	DELETE /api/bloodsugar/:id
+
+
+### Examples
+
+Request
+
+```
+axios.delete('/api/bloodsugar/{id}');
+```
+
+### Success Response
+
+Response
+
+```
+    HTTP/1.1 200
+{
+       "message":"{1}, user has been deleted"
+   }
+```
+### Error Response
+
+Response
+
+```
+HTTP/1.1 400
+{
+    "message":"Sorry, user does not exist"
+}
+```
+# insulin
+
+## DELETE /api/insulin/:id
+
+
+
+	DELETE /api/insulin/:id
+
+
+### Examples
+
+Request
+
+```
+axios.delete('/api/insulin/{id}');
+```
+
+### Success Response
+
+Response
+
+```
+    HTTP/1.1 200
+{
+       "message":"{1}, user has been deleted"
+   }
+```
+### Error Response
+
+Response
+
+```
+HTTP/1.1 400
+{
+    "message":"Sorry, user does not exist"
+}
+```
+

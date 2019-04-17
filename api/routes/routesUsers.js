@@ -188,7 +188,6 @@ server.get('/:id', async (req, res) => {
         }
     ]
 *
-*
 */
 
 server.get('/mobile/:id', async (req, res) => {

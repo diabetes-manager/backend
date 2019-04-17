@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Databetes API docs",
     "title": "Api Documentation",
-    "url": "https://arcane-woodland-11613.herokuapp.com",
+    "url": "http://localhost:3333",
     "sampleUrl": "https://arcane-woodland-11613.herokuapp.com",
     "header": {
         "title": "Databetes Manager",

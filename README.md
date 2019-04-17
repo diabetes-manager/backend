@@ -17,6 +17,7 @@ Databetes API docs
 	- [GET /api/users](#get-/api/users)
 	- [POST /api/users](#post-/api/users)
 	- [DELETE /api/users/:id](#delete-/api/users/:id)
+	- [PUT /api/users/{id}](#put-/api/users/{id})
 	
 
 
@@ -330,6 +331,49 @@ Response
 HTTP/1.1 400
 {
     "message":"Sorry, user does not exist"
+}
+```
+## PUT /api/users/{id}
+
+
+
+	UPDATE /api/users/{id}
+
+
+### Examples
+
+Request
+
+```
+axios.update('/api/users/{id}');
+```
+
+### Success Response
+
+Response
+
+```
+    HTTP/1.1 200
+{
+       "message":"user has been updated"
+   }
+```
+### Error Response
+
+Response
+
+```
+HTTP/1.1 400
+{
+    "message":"Sorry, user does not exist"
+}
+```
+Response
+
+```
+HTTP/1.1 400
+{
+    "message":"Please include a user id to update"
 }
 ```
 

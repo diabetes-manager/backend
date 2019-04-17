@@ -2,6 +2,12 @@
 
 Databetes API docs
 
+- [Bloodsugar](#bloodsugar)
+	- [POST /api/bloodsugar](#post-/api/bloodsugar)
+	
+- [Insulin](#insulin)
+	- [POST /api/insulin](#post-/api/insulin)
+	
 - [Root](#root)
 	- [GET /api](#get-/api)
 	
@@ -14,6 +20,80 @@ Databetes API docs
 	
 
 
+# Bloodsugar
+
+## POST /api/bloodsugar
+
+
+
+	POST /api/bloodsugar
+
+
+### Examples
+
+Request
+
+```
+axios.post('/api/bloodsugar');
+```
+
+### Success Response
+
+Response
+
+```
+    HTTP/1.1 201
+{
+       "message":"Thank you, bloodsugar data has been added" 
+   }
+```
+### Error Response
+
+Response
+
+```
+HTTP/1.1 400
+{
+    "message":"User does not exist"
+}
+```
+# Insulin
+
+## POST /api/insulin
+
+
+
+	POST /api/insulin
+
+
+### Examples
+
+Request
+
+```
+axios.post('/api/insulin');
+```
+
+### Success Response
+
+Response
+
+```
+    HTTP/1.1 201
+{
+       "message":"Thank you, insulin data has been added" 
+   }
+```
+### Error Response
+
+Response
+
+```
+HTTP/1.1 400
+{
+    "message":"User does not exist"
+}
+```
 # Root
 
 ## GET /api
@@ -111,11 +191,23 @@ Response
            "gender": null,
            "diabetes_type": null,
            "insulin": {
-               "amount": 
-           },
+               "id": 1,
+               "timestamp": "2019-02-01T03:10:45Z",
+               "amount": 17,
+               "duration": null,
+               "type": "pill form",
+               "brand": "Novolog",
+               "user_id": 1
+           }...,
            "bloodsugar": {
-               "value": 
-           }
+               "id": 1,
+               "timestamp": "2019-02-01T03:21:53Z",
+               "amount": 15,
+               "duration": null,
+               "type": "slow acting",
+               "brand": "Humalog",
+               "user_id": 1
+           }...
        }
    ]
 ```

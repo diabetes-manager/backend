@@ -5,10 +5,12 @@ Databetes API docs
 - [Bloodsugar](#bloodsugar)
 	- [GET /api/bloodsugar/{id}](#get-/api/bloodsugar/{id})
 	- [POST /api/bloodsugar](#post-/api/bloodsugar)
+	- [DELETE /api/bloodsugar/:id](#delete-/api/bloodsugar/:id)
 	
 - [Insulin](#insulin)
 	- [GET /api/insulin/{id}](#get-/api/insulin/{id})
 	- [POST /api/insulin](#post-/api/insulin)
+	- [DELETE /api/insulin/:id](#delete-/api/insulin/:id)
 	
 - [Root](#root)
 	- [GET /api](#get-/api)
@@ -20,12 +22,6 @@ Databetes API docs
 	- [POST /api/users](#post-/api/users)
 	- [DELETE /api/users/:id](#delete-/api/users/:id)
 	- [PUT /api/users/{id}](#put-/api/users/{id})
-	
-- [bloodsugar](#bloodsugar)
-	- [DELETE /api/bloodsugar/:id](#delete-/api/bloodsugar/:id)
-	
-- [insulin](#insulin)
-	- [DELETE /api/insulin/:id](#delete-/api/insulin/:id)
 	
 
 
@@ -97,6 +93,41 @@ HTTP/1.1 400
     "message":"User does not exist"
 }
 ```
+## DELETE /api/bloodsugar/:id
+
+
+
+	DELETE /api/bloodsugar/:id
+
+
+### Examples
+
+Request
+
+```
+axios.delete('/api/bloodsugar/{id}');
+```
+
+### Success Response
+
+Response
+
+```
+    HTTP/1.1 200
+{
+       "message":"{1}, user has been deleted"
+   }
+```
+### Error Response
+
+Response
+
+```
+HTTP/1.1 400
+{
+    "message":"Sorry, user does not exist"
+}
+```
 # Insulin
 
 ## GET /api/insulin/{id}
@@ -164,6 +195,41 @@ Response
 HTTP/1.1 400
 {
     "message":"User does not exist"
+}
+```
+## DELETE /api/insulin/:id
+
+
+
+	DELETE /api/insulin/:id
+
+
+### Examples
+
+Request
+
+```
+axios.delete('/api/insulin/{id}');
+```
+
+### Success Response
+
+Response
+
+```
+    HTTP/1.1 200
+{
+       "message":"{1}, user has been deleted"
+   }
+```
+### Error Response
+
+Response
+
+```
+HTTP/1.1 400
+{
+    "message":"Sorry, user does not exist"
 }
 ```
 # Root
@@ -445,80 +511,6 @@ Response
 HTTP/1.1 400
 {
     "message":"Please include a user id to update"
-}
-```
-# bloodsugar
-
-## DELETE /api/bloodsugar/:id
-
-
-
-	DELETE /api/bloodsugar/:id
-
-
-### Examples
-
-Request
-
-```
-axios.delete('/api/bloodsugar/{id}');
-```
-
-### Success Response
-
-Response
-
-```
-    HTTP/1.1 200
-{
-       "message":"{1}, user has been deleted"
-   }
-```
-### Error Response
-
-Response
-
-```
-HTTP/1.1 400
-{
-    "message":"Sorry, user does not exist"
-}
-```
-# insulin
-
-## DELETE /api/insulin/:id
-
-
-
-	DELETE /api/insulin/:id
-
-
-### Examples
-
-Request
-
-```
-axios.delete('/api/insulin/{id}');
-```
-
-### Success Response
-
-Response
-
-```
-    HTTP/1.1 200
-{
-       "message":"{1}, user has been deleted"
-   }
-```
-### Error Response
-
-Response
-
-```
-HTTP/1.1 400
-{
-    "message":"Sorry, user does not exist"
 }
 ```
 

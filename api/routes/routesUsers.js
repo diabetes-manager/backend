@@ -15,7 +15,7 @@ const server = express.Router();
  * axios.get('/api/users');
  *
  * @apiSuccess {id} id            User Id
- * @apiSuccess {string} username            Username (required)
+ * @apiSuccess {string} username            Username (required, must be unique)
  * @apiSuccess {number} bg_high            User Bg_high (required)
  * @apiSuccess {number} bg_low            User Bg_low (required)
  * @apiSuccess {number} bg_target_top            User Bg_target_top (defaults to 7, subject to change)
@@ -83,7 +83,7 @@ server.get('/', async (req, res) => {
  * axios.get('/api/users/{id}');
  *
  * @apiSuccess {id} id            User Id
- * @apiSuccess {string} username            Username (required)
+ * @apiSuccess {string} username            Username (required, must be unique)
  * @apiSuccess {number} bg_high            User Bg_high (required)
  * @apiSuccess {number} bg_low            User Bg_low (required)
  * @apiSuccess {number} bg_target_top            User Bg_target_top (defaults to 7, subject to change)
@@ -138,7 +138,7 @@ server.get('/:id', async (req, res) => {
  * axios.get('/api/users/mobile/{id}');
  *
  * @apiSuccess {id} id            User Id
- * @apiSuccess {string} username            Username (required)
+ * @apiSuccess {string} username            Username (required, must be unique)
  * @apiSuccess {number} bg_high            User Bg_high (required)
  * @apiSuccess {number} bg_low            User Bg_low (required)
  * @apiSuccess {number} bg_target_top            User Bg_target_top (defaults to 7, subject to change)
@@ -195,7 +195,7 @@ server.get('/mobile/:id', async (req, res) => {
     try {
         const userById = await db('users').where({ id:req.params.id }).first();
         const insulinById = await db('insulin').where({ user_id:req.params.id });
-        const bloodsugarById = await db('insulin').where({ user_id:req.params.id });
+        const bloodsugarById = await db('bloodsugar').where({ user_id:req.params.id });
         if (userById.length === 0) {  
             res.status(404).json({ message:"The user with the specified ID does not exist." });
         } else {
@@ -218,7 +218,7 @@ server.get('/mobile/:id', async (req, res) => {
  * @apiExample Request
  * axios.post('/api/users');
  *
- * @apiSuccess {string} username            Username (required)
+ * @apiSuccess {string} username            Username (required, must be unique)
  * @apiSuccess {number} bg_high            User Bg_high (required)
  * @apiSuccess {number} bg_low            User Bg_low (required)
  * @apiSuccess {number} bg_target_top            User Bg_target_top (defaults to 7, subject to change)
@@ -251,7 +251,7 @@ server.post('/', async (req, res) => {
     try {
         const checkUserExists = await db('users').where({ username:req.body.username }).first();
         if(checkUserExists) {
-            return res.status(400).json({ message:"Username exists, please choose another" })
+            return res.status(404).json({ message:"Username exists, please choose another" })
         }
         const [id] = await db('users').insert(req.body)
         res.status(201).json({ message:"Thank you, user has been added" });
@@ -289,7 +289,7 @@ server.post('/', async (req, res) => {
 server.delete('/:id', async (req, res) => {
     const checkUserExists = await db('users').where({ id:req.params.id }).first();
     if(!checkUserExists) {
-        return res.status(400).json({ message:"Sorry, user does not exist" })
+        return res.status(404).json({ message:"Sorry, user does not exist" })
     }
     try {
         const userDelete = await db('users').where('id',req.params.id).del();
@@ -303,6 +303,75 @@ server.delete('/:id', async (req, res) => {
         res.status(500).json({ message:"Something went wrong deleting user!",error:error })
     }
 });
+
+
+
+/**
+ * @api {update} /api/users/{id}    PUT /api/users/{id}
+ * @apiVersion 1.0.0
+ * @apiName Update User
+ * @apiGroup Users
+ *
+ * @apiExample Request
+ * axios.update('/api/users/{id}');
+ *
+ * @apiSuccess {id} id            User Id updated (required)
+ * @apiSuccess {string} username       User username can be updated
+ * @apiSuccess {number} bg_high       BG high can be updated
+ * @apiSuccess {number} bg_low       BG low can be updated
+ * @apiSuccess {number} bg_target_top       BG target top can be updated
+ * @apiSuccess {number} bg_target_bottom       BG target bottom can be updated
+ * @apiSuccess {number} height       User height can be updated
+ * @apiSuccess {number} weight       User weight can be updated
+ * 
+ * 
+ * @apiSuccessExample {json} Response
+ *      HTTP/1.1 200
+ *  {
+        "message":"user has been updated"
+    }
+ * @apiError UsernameNotExists     Username must exist to update
+ * @apiErrorExample Response
+ *      HTTP/1.1 400
+ *      {
+ *          "message":"Sorry, user does not exist"
+ *      }
+ * @apiError IdRequired     User id parameter must be set
+ * @apiErrorExample Response
+ *      HTTP/1.1 400
+ *      {
+ *          "message":"Please include a user id to update"
+ *      }
+*/
+server.put('/:id', async (req, res) => {
+    const bodyObject = Object.keys(req.body)
+    if(!bodyObject.length) return res.status(400).json({ message:"Nothing to update" })
+
+    try {
+        const checkUserExists = await db('users').where({ id:req.params.id }).first();
+        const allUsers = await db('users');
+        const userFiltered = allUsers.filter(user => user.username === req.body.username);
+        if(!checkUserExists) return res.status(404).json({ message:"Sorry, user does not exist" })
+        if (userFiltered.length >= 1) {
+            return res.status(409).json({ message: "Please choose a different username. Username already exists." })
+        }
+    }
+    catch (error) {
+        res.status(500).json({ message: "Something went wrong updating user!"})
+    }
+    try {
+        const userUpdate = await db('users').where({ id:req.params.id }).update(req.body);
+        res.status(200).json({ message: `${userUpdate} user has been updated` })
+    }
+    catch (error) {
+        res.status(500).json({ message: "Something went wrong updating user!"})
+    }
+});
+
+server.put('/', async (req, res) => {
+    res.status(400).json({ message:"Please include a user id to update" })
+});
+
 
 
 module.exports = server;

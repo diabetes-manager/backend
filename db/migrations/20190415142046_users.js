@@ -16,11 +16,13 @@ exports.up = function(knex) {
         
         user.integer('weight')
         
-        user.integer('age')
+        user.date('birthdate',255)
         
+        user.date('diagnosis_date',255)
+
         user.string('gender', 255)
-        
-        user.float('carb_insulin', 255)
+
+        user.string('diabetes_type', 255)
 
     });
 };

@@ -7,6 +7,7 @@ Databetes API docs
 	
 - [Users](#users)
 	- [GET /api/users/{id}](#get-/api/users/{id})
+	- [GET /api/users/mobile/{id}](#get-/api/users/mobile/{id})
 	- [GET /api/users](#get-/api/users)
 	- [POST /api/users](#post-/api/users)
 	- [DELETE /api/users/:id](#delete-/api/users/:id)
@@ -66,16 +67,55 @@ Response
 [
     {
            "id": 1,
-           "username": "tanka",
+           "username": "Patient Zero",
            "bg_high": 7,
            "bg_low": 3,
-           "bg_target_top": 10,
-           "bg_target_bottom": 1,
+           "bg_target_top": 7,
+           "bg_target_bottom": 3,
+           ...
+       }
+   ]
+```
+## GET /api/users/mobile/{id}
+
+
+
+	GET /api/users/mobile/:id
+
+
+### Examples
+
+Request
+
+```
+axios.get('/api/users/mobile/{id}');
+```
+
+### Success Response
+
+Response
+
+```
+[
+    {
+           "id": 1,
+           "username": "Patient Zero",
+           "bg_high": 7,
+           "bg_low": 3,
+           "bg_target_top": 7,
+           "bg_target_bottom": 3,
            "height": null,
            "weight": null,
-           "age": null,
+           "birthdate": null,
+           "diagnosis_date": null,
            "gender": null,
-           "carb_insulin": null
+           "diabetes_type": null,
+           "insulin": {
+               "amount": 
+           },
+           "bloodsugar": {
+               "value": 
+           }
        }
    ]
 ```
@@ -102,17 +142,32 @@ Response
 [
     {
            "id": 1,
-           "username": "tanka",
+           "username": "Patient Zero",
            "bg_high": 7,
            "bg_low": 3,
-           "bg_target_top": 10,
-           "bg_target_bottom": 1,
+           "bg_target_top": 7,
+           "bg_target_bottom": 3,
            "height": null,
            "weight": null,
-           "age": null,
+           "birthdate": null,
+           "diagnosis_date": null,
            "gender": null,
-           "carb_insulin": null
-       }...
+           "diabetes_type": null,
+       },
+       {
+           "id": 2,
+           "username": "Patient One",
+           "bg_high": 6,
+           "bg_low": 4,
+           "bg_target_top": 7,
+           "bg_target_bottom": 3,
+           "height": null,
+           "weight": null,
+           "birthdate": null,
+           "diagnosis_date": null,
+           "gender": null,
+           "diabetes_type": null
+       }
    ]
 ```
 ## POST /api/users

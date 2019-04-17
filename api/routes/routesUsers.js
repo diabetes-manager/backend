@@ -15,31 +15,48 @@ const server = express.Router();
  * axios.get('/api/users');
  *
  * @apiSuccess {id} id            User Id
- * @apiSuccess {string} username            Username
- * @apiSuccess {number} bg_high            User Bg_high
- * @apiSuccess {number} bg_low            User Bg_low
- * @apiSuccess {number} bg_target_top            User Bg_target_top
- * @apiSuccess {number} bg_target_bottom            User Bg_target_bottom
+ * @apiSuccess {string} username            Username (required)
+ * @apiSuccess {number} bg_high            User Bg_high (required)
+ * @apiSuccess {number} bg_low            User Bg_low (required)
+ * @apiSuccess {number} bg_target_top            User Bg_target_top (defaults to 7, subject to change)
+ * @apiSuccess {number} bg_target_bottom            User Bg_target_bottom (defaults to 3, subject to change)
  * @apiSuccess {number} height            User height
  * @apiSuccess {number} weight            User weight
- * @apiSuccess {number} age            User age
+ * @apiSuccess {date} birthdate            User birthdate
+ * @apiSuccess {date} diagnosis_date            User diagnosis_date
  * @apiSuccess {string} gender            User gender
- * @apiSuccess {number} carb_insulin            User Carb to Insulin ratio (temporary)
+ * @apiSuccess {string} diabetes_type            Diabetes type (usually 1 or 2)
+
  * @apiSuccessExample {json} Response
  *  [
  *      {
             "id": 1,
-            "username": "tanka",
+            "username": "Patient Zero",
             "bg_high": 7,
             "bg_low": 3,
-            "bg_target_top": 10,
-            "bg_target_bottom": 1,
+            "bg_target_top": 7,
+            "bg_target_bottom": 3,
             "height": null,
             "weight": null,
-            "age": null,
+            "birthdate": null,
+            "diagnosis_date": null,
             "gender": null,
-            "carb_insulin": null
-        }...
+            "diabetes_type": null,
+        },
+        {
+            "id": 2,
+            "username": "Patient One",
+            "bg_high": 6,
+            "bg_low": 4,
+            "bg_target_top": 7,
+            "bg_target_bottom": 3,
+            "height": null,
+            "weight": null,
+            "birthdate": null,
+            "diagnosis_date": null,
+            "gender": null,
+            "diabetes_type": null
+        }
     ]
 *
 *
@@ -66,30 +83,28 @@ server.get('/', async (req, res) => {
  * axios.get('/api/users/{id}');
  *
  * @apiSuccess {id} id            User Id
- * @apiSuccess {string} username            Username
- * @apiSuccess {number} bg_high            User Bg_high
- * @apiSuccess {number} bg_low            User Bg_low
- * @apiSuccess {number} bg_target_top            User Bg_target_top
- * @apiSuccess {number} bg_target_bottom            User Bg_target_bottom
+ * @apiSuccess {string} username            Username (required)
+ * @apiSuccess {number} bg_high            User Bg_high (required)
+ * @apiSuccess {number} bg_low            User Bg_low (required)
+ * @apiSuccess {number} bg_target_top            User Bg_target_top (defaults to 7, subject to change)
+ * @apiSuccess {number} bg_target_bottom            User Bg_target_bottom (defaults to 3, subject to change)
  * @apiSuccess {number} height            User height
  * @apiSuccess {number} weight            User weight
- * @apiSuccess {number} age            User age
+ * @apiSuccess {date} birthdate            User birthdate
+ * @apiSuccess {date} diagnosis_date            User diagnosis_date
  * @apiSuccess {string} gender            User gender
- * @apiSuccess {number} carb_insulin            User Carb to Insulin ratio (temporary)
+ * @apiSuccess {string} diabetes_type            Diabetes type (usually 1 or 2)
+ * 
  * @apiSuccessExample {json} Response
  *  [
  *      {
             "id": 1,
-            "username": "tanka",
+            "username": "Patient Zero",
             "bg_high": 7,
             "bg_low": 3,
-            "bg_target_top": 10,
-            "bg_target_bottom": 1,
-            "height": null,
-            "weight": null,
-            "age": null,
-            "gender": null,
-            "carb_insulin": null
+            "bg_target_top": 7,
+            "bg_target_bottom": 3,
+            ...
         }
     ]
 *
@@ -108,6 +123,75 @@ server.get('/:id', async (req, res) => {
         res.status(500).json({ message:"Cannot retrieve the user", error:error });
     }
 });
+
+
+
+
+
+/**
+ * @api {get} /api/users/mobile/:id    GET /api/users/mobile/{id}
+ * @apiVersion 1.0.0
+ * @apiName Get User (mobile)
+ * @apiGroup Users
+ *
+ * @apiExample Request
+ * axios.get('/api/users/mobile/{id}');
+ *
+ * @apiSuccess {id} id            User Id
+ * @apiSuccess {string} username            Username (required)
+ * @apiSuccess {number} bg_high            User Bg_high (required)
+ * @apiSuccess {number} bg_low            User Bg_low (required)
+ * @apiSuccess {number} bg_target_top            User Bg_target_top (defaults to 7, subject to change)
+ * @apiSuccess {number} bg_target_bottom            User Bg_target_bottom (defaults to 3, subject to change)
+ * @apiSuccess {number} height            User height
+ * @apiSuccess {number} weight            User weight
+ * @apiSuccess {date} birthdate            User birthdate
+ * @apiSuccess {date} diagnosis_date            User diagnosis_date
+ * @apiSuccess {string} gender            User gender
+ * @apiSuccess {string} diabetes_type            Diabetes type (usually 1 or 2)
+ * 
+ * @apiSuccessExample {json} Response
+ *  [
+ *      {
+            "id": 1,
+            "username": "Patient Zero",
+            "bg_high": 7,
+            "bg_low": 3,
+            "bg_target_top": 7,
+            "bg_target_bottom": 3,
+            "height": null,
+            "weight": null,
+            "birthdate": null,
+            "diagnosis_date": null,
+            "gender": null,
+            "diabetes_type": null,
+            "insulin": {
+                "amount": 
+            },
+            "bloodsugar": {
+                "value": 
+            }
+        }
+    ]
+*
+*
+*/
+
+server.get('/mobile/:id', async (req, res) => {
+    try {
+        const userById = await db('users').where({ id:req.params.id }).first();
+        const insulinById = await db('insulin').where({ user_id:req.params.id });
+        const bloodsugarById = await db('insulin').where({ user_id:req.params.id });
+        if (userById.length === 0) {  
+            res.status(404).json({ message:"The user with the specified ID does not exist." });
+        } else {
+            res.status(200).json({ ...userById, insulinById, bloodsugarById });
+        }
+    } catch (error) {
+        res.status(500).json({ message:"Cannot retrieve the user", error:error });
+    }
+});
+
 
 
 

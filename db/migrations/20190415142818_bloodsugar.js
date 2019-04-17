@@ -5,7 +5,11 @@ exports.up = function(knex) {
 
         tbl.timestamp('timestamp').defaultTo(knex.fn.now());
 
-        tbl.float('measurement').notNullable();
+        tbl.integer('value').notNullable();
+
+        tbl.boolean('below_threshold')
+
+        tbl.integer('prediction')
 
         tbl
         .integer('user_id')

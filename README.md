@@ -1,5 +1,7 @@
 # Databetes v1.0.0
 
+![Build Status](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiQkRsV1A5SnY2SXo0QmFuOFVNcndrSVNXQ0E2bnVMVndrcnNhMFVqMjNnRWZyVnd5S1d0ZlMwN1VzYTZNQ291ZktBQ2hDMmdqT2lSb3JPaGJkc2cwYWp3PSIsIml2UGFyYW1ldGVyU3BlYyI6ImVoNFlNMlJzd0JZNGZjOEMiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
+
 Databetes API docs
 
 - [Bloodsugar](#bloodsugar)
@@ -333,6 +335,7 @@ HTTP/1.1 400
     "message":"Sorry, user does not exist"
 }
 ```
+<<<<<<< HEAD
 ## PUT /api/users/{id}
 
 
@@ -377,3 +380,5 @@ HTTP/1.1 400
 }
 ```
 
+=======
+>>>>>>> d3544b8dc65e90ca331cf4474232b7d012fbe5f9

@@ -195,7 +195,7 @@ server.get('/mobile/:id', async (req, res) => {
     try {
         const userById = await db('users').where({ id:req.params.id }).first();
         const insulinById = await db('insulin').where({ user_id:req.params.id });
-        const bloodsugarById = await db('insulin').where({ user_id:req.params.id });
+        const bloodsugarById = await db('bloodsugar').where({ user_id:req.params.id });
         if (userById.length === 0) {  
             res.status(404).json({ message:"The user with the specified ID does not exist." });
         } else {

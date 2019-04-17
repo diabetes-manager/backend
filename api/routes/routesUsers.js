@@ -149,6 +149,8 @@ server.get('/:id', async (req, res) => {
  * @apiSuccess {date} diagnosis_date            User diagnosis_date
  * @apiSuccess {string} gender            User gender
  * @apiSuccess {string} diabetes_type            Diabetes type (usually 1 or 2)
+ * @apiSuccess {string} insulin            Insulin data pertaining to user
+ * @apiSuccess {string} bloodsugar            Bloodsugar data pertaining to user
  * 
  * @apiSuccessExample {json} Response
  *  [
@@ -166,11 +168,23 @@ server.get('/:id', async (req, res) => {
             "gender": null,
             "diabetes_type": null,
             "insulin": {
-                "amount": 
-            },
+                "id": 1,
+                "timestamp": "2019-02-01T03:10:45Z",
+                "amount": 17,
+                "duration": null,
+                "type": "pill form",
+                "brand": "Novolog",
+                "user_id": 1
+            }...,
             "bloodsugar": {
-                "value": 
-            }
+                "id": 1,
+                "timestamp": "2019-02-01T03:21:53Z",
+                "amount": 15,
+                "duration": null,
+                "type": "slow acting",
+                "brand": "Humalog",
+                "user_id": 1
+            }...
         }
     ]
 *
@@ -204,17 +218,19 @@ server.get('/mobile/:id', async (req, res) => {
  * @apiExample Request
  * axios.post('/api/users');
  *
- * @apiSuccess {id} id            User Id
  * @apiSuccess {string} username            Username (required)
  * @apiSuccess {number} bg_high            User Bg_high (required)
  * @apiSuccess {number} bg_low            User Bg_low (required)
- * @apiSuccess {number} bg_target_top            User Bg_target_top (required)
- * @apiSuccess {number} bg_target_bottom            User Bg_target_bottom (required)
+ * @apiSuccess {number} bg_target_top            User Bg_target_top (defaults to 7, subject to change)
+ * @apiSuccess {number} bg_target_bottom            User Bg_target_bottom (defaults to 3, subject to change)
  * @apiSuccess {number} height            User height 
  * @apiSuccess {number} weight            User weight
- * @apiSuccess {number} age            User age
+ * @apiSuccess {number} birthdate            User birthdate
  * @apiSuccess {string} gender            User gender
- * @apiSuccess {number} carb_insulin            User Carb to Insulin ratio (temporary)
+ * @apiSuccess {string} diabetes_type            Diabetes type (usually 1 or 2)
+ * @apiSuccess {string} insulin            Insulin data pertaining to user (comes from insulin table)
+ * @apiSuccess {string} bloodsugar            Bloodsugar data pertaining to user (comes from bloodsugar table)
+ * 
  * @apiSuccessExample {json} Response
  *      HTTP/1.1 201
  *  {
@@ -230,8 +246,8 @@ server.get('/mobile/:id', async (req, res) => {
 
 server.post('/', async (req, res) => {
     if(!req.body.username || !req.body.bg_high || !req.body.bg_low || !req.body.bg_target_top || !req.body.bg_target_bottom) {
-        return res.status(400).json({ message:"Please include username, bg high and bg low" 
-    })}
+        return res.status(400).json({ message:"Please include username, bg high and bg low" })
+    }
     try {
         const checkUserExists = await db('users').where({ username:req.body.username }).first();
         if(checkUserExists) {
@@ -243,6 +259,8 @@ server.post('/', async (req, res) => {
         res.status(500).json({ message:"Cannot add the user", error:error });
     }
 });
+
+
 
 
 /**

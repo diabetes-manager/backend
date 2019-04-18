@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Databetes API docs",
     "title": "Api Documentation",
-    "url": "http://localhost:3333",
+    "url": "https://glucose-iq.herokuapp.com",
     "sampleUrl": "https://glucose-iq.herokuapp.com",
     "header": {
         "title": "Databetes Manager",

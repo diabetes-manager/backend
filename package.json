@@ -8,7 +8,7 @@
     "api-docs": "apidoc -f .js -i api/ -o docs/",
     "build-docs": "apidoc-markdown -p ./docs/ -o README.md",
     "build-api": "npm-run-all api-docs build-docs",
-    "test": "cross-env DB_ENV=development jest --watch --verbose"
+    "test": "cross-env DB_ENV=testing jest --watch --verbose"
   },
   "repository": "git@github.com:diabetes-manager/backend.git",
   "author": "Frank Martinez <frankie.martinez@gmail.com>",

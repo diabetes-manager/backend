@@ -10,13 +10,13 @@ server.use(express.json());
 
 
 /**
- * @api {get} /api/bloodsugar/:id    GET /api/bloodsugar/{id}
+ * @api {get} /api/users/bloodsugar/:id    GET /api/users/bloodsugar/{id}
  * @apiVersion 1.0.0
  * @apiName Get Bloodsugar by User
  * @apiGroup Bloodsugar
  *
  * @apiExample Request
- * axios.get('/api/bloodsugar/{id}');
+ * axios.get('/api/users/bloodsugar/{id}');
  *
  * @apiSuccess {id} id            User Id
  * @apiSuccess {timestamp} timestamp            Timestamp for reading
@@ -57,13 +57,13 @@ server.get('/:id', async (req, res) => {
 
 
 /**
- * @api {post} /api/bloodsugar    POST /api/bloodsugar
+ * @api {post} /api/users/bloodsugar    POST /api/users/bloodsugar
  * @apiVersion 1.0.0
  * @apiName Post Bloodsugar
  * @apiGroup Bloodsugar
  *
  * @apiExample Request
- * axios.post('/api/bloodsugar');
+ * axios.post('/api/users/bloodsugar');
  * 
  * @apiSuccess {number} user_id            ID of user bloodsugar data is associated with (required)
  * @apiSuccess {timestamp} timestamp            Timestamp (default)
@@ -100,14 +100,16 @@ server.post('/', async (req, res) => {
     }
 });
 
+
+
 /**
- * @api {delete} /api/bloodsugar/:id    DELETE /api/bloodsugar/:id
+ * @api {delete} /api/users/bloodsugar/:id    DELETE /api/users/bloodsugar/:id
  * @apiVersion 1.0.0
  * @apiName Remove Bloodsugar by User
  * @apiGroup Bloodsugar
  *
  * @apiExample Request
- * axios.delete('/api/bloodsugar/{id}');
+ * axios.delete('/api/users/bloodsugar/{id}');
  *
  * @apiSuccess {id} id            User Id deleted
  * @apiSuccessExample {json} Response

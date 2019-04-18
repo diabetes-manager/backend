@@ -10,13 +10,13 @@ server.use(express.json());
 
 
 /**
- * @api {delete} /api/insulin/:id    DELETE /api/insulin/:id
+ * @api {delete} /api/users/insulin/:id    DELETE /api/users/insulin/:id
  * @apiVersion 1.0.0
  * @apiName Remove Insulin by User
  * @apiGroup Insulin
  *
  * @apiExample Request
- * axios.delete('/api/insulin/{id}');
+ * axios.delete('/api/users/insulin/{id}');
  *
  * @apiSuccess {id} id            User Id deleted
  * @apiSuccessExample {json} Response
@@ -56,13 +56,13 @@ server.delete('/:id', async (req, res) => {
 
 
 /**
- * @api {get} /api/insulin/:id    GET /api/insulin/{id}
+ * @api {get} /api/users/insulin/:id    GET /api/users/insulin/{id}
  * @apiVersion 1.0.0
  * @apiName Get insulin by User
  * @apiGroup Insulin
  *
  * @apiExample Request
- * axios.get('/api/insulin/{id}');
+ * axios.get('/api/users/insulin/{id}');
  *
  * @apiSuccess {id} id            User Id
  * @apiSuccess {timestamp} timestamp            Timestamp for reading
@@ -106,13 +106,13 @@ server.get('/:id', async (req, res) => {
 
 
 /**
- * @api {post} /api/insulin    POST /api/insulin
+ * @api {post} /api/users/insulin    POST /api/users/insulin
  * @apiVersion 1.0.0
  * @apiName Post Insulin
  * @apiGroup Insulin
  *
  * @apiExample Request
- * axios.post('/api/insulin');
+ * axios.post('/api/users/insulin');
  * 
  * @apiSuccess {timestamp} timestamp            Timestamp (default)
  * @apiSuccess {number} user_id            ID of user insulin data is associated with (required)

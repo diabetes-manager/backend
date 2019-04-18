@@ -4,6 +4,8 @@ const db = require('../../knexConfig.js');
 
 const server = express();
 
+server.use(express.json());
+
 
 
 

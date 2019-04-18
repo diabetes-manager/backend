@@ -40,7 +40,7 @@ server.use(express.json());
 *
 */
 
-server.get('/:id', async function (req, res) {
+server.get('/:id', async (req, res) => {
     try {
         const userById = await db('users').where({ id:req.params.id }).first();
         const bloodsugar = await db('bloodsugar').where({ user_id:req.params.id })

@@ -23,7 +23,6 @@ exports.up = function(knex) {
 };
   
 exports.down = function(knex) {
-    // undo the operation in up
     return knex.schema.dropTableIfExists('bloodsugar');
 };
   

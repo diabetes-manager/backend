@@ -244,7 +244,7 @@ server.get('/mobile/:id', async (req, res) => {
 */
 
 server.post('/', async (req, res) => {
-    if(!req.body.username || !req.body.bg_high || !req.body.bg_low || !req.body.bg_target_top || !req.body.bg_target_bottom) {
+    if(!req.body.username || !req.body.bg_high || !req.body.bg_low) {
         return res.status(400).json({ message:"Please include username, bg high and bg low" })
     }
     try {
@@ -253,7 +253,7 @@ server.post('/', async (req, res) => {
             return res.status(404).json({ message:"Username exists, please choose another" })
         }
         const [id] = await db('users').insert(req.body)
-        res.status(201).json({ message:"Thank you, user has been added" });
+        res.status(201).json({ message:"Thank you, user has been added", user:req.body });
     } catch (error) {
         res.status(500).json({ message:"Cannot add the user", error:error });
     }

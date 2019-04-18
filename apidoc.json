@@ -7,10 +7,10 @@
     "sampleUrl": "https://arcane-woodland-11613.herokuapp.com",
     "header": {
         "title": "Databetes Manager",
-        "filename": "header.md"
+        "filename": "./apidocs/header.md"
     },
     "footer": {
-        "filename":"footer.md"
+        "filename":"./apidocs/footer.md"
     },
     "template": {
         "withGenerator": true,

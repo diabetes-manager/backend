@@ -256,7 +256,7 @@ Example:
 ```
 [
     {
-           "message": "Hello!"
+           "greeting": "Hello!"
        }...
    ]
 ```

@@ -13,7 +13,9 @@ awsconfiguration.json
 /node_modules
 
 # env
+*.env
 .env
+.env.test
 .env.local
 .env.staging
 .env.example

@@ -2,7 +2,7 @@ const express = require('express');
 
 const db = require('../../knexConfig.js');
 
-const server = express();
+const server = express.Router();
 
 server.use(express.json());
 

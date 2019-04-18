@@ -4,6 +4,7 @@ const db = require('../../knexConfig.js');
 
 const server = express();
 
+server.use(express.json());
 
 /**
  * @api {get} /api/users GET /api/users

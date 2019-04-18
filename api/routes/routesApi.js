@@ -24,7 +24,6 @@ server.use(express.json());
 
 server.get('/', function (req, res) {
     res.status(200).json({ greeting:'Hello!' });
-    // res.status(200).send('hello');
 });
   
 

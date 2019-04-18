@@ -3,14 +3,14 @@
 Databetes API docs
 
 - [Bloodsugar](#bloodsugar)
-	- [GET /api/bloodsugar/{id}](#get-/api/bloodsugar/{id})
-	- [POST /api/bloodsugar](#post-/api/bloodsugar)
-	- [DELETE /api/bloodsugar/:id](#delete-/api/bloodsugar/:id)
+	- [GET /api/users/bloodsugar/{id}](#get-/api/users/bloodsugar/{id})
+	- [POST /api/users/bloodsugar](#post-/api/users/bloodsugar)
+	- [DELETE /api/users/bloodsugar/:id](#delete-/api/users/bloodsugar/:id)
 	
 - [Insulin](#insulin)
-	- [GET /api/insulin/{id}](#get-/api/insulin/{id})
-	- [POST /api/insulin](#post-/api/insulin)
-	- [DELETE /api/insulin/:id](#delete-/api/insulin/:id)
+	- [GET /api/users/insulin/{id}](#get-/api/users/insulin/{id})
+	- [POST /api/users/insulin](#post-/api/users/insulin)
+	- [DELETE /api/users/insulin/:id](#delete-/api/users/insulin/:id)
 	
 - [Root](#root)
 	- [GET /api](#get-/api)
@@ -27,11 +27,11 @@ Databetes API docs
 
 # Bloodsugar
 
-## GET /api/bloodsugar/{id}
+## GET /api/users/bloodsugar/{id}
 
 
 
-	GET /api/bloodsugar/:id
+	GET /api/users/bloodsugar/:id
 
 
 ### Examples
@@ -39,7 +39,7 @@ Databetes API docs
 Request
 
 ```
-axios.get('/api/bloodsugar/{id}');
+axios.get('/api/users/bloodsugar/{id}');
 ```
 
 ### Success Response
@@ -58,11 +58,11 @@ Response
        }...
    ]
 ```
-## POST /api/bloodsugar
+## POST /api/users/bloodsugar
 
 
 
-	POST /api/bloodsugar
+	POST /api/users/bloodsugar
 
 
 ### Examples
@@ -70,7 +70,7 @@ Response
 Request
 
 ```
-axios.post('/api/bloodsugar');
+axios.post('/api/users/bloodsugar');
 ```
 
 ### Success Response
@@ -93,11 +93,11 @@ HTTP/1.1 400
     "message":"User does not exist"
 }
 ```
-## DELETE /api/bloodsugar/:id
+## DELETE /api/users/bloodsugar/:id
 
 
 
-	DELETE /api/bloodsugar/:id
+	DELETE /api/users/bloodsugar/:id
 
 
 ### Examples
@@ -105,7 +105,7 @@ HTTP/1.1 400
 Request
 
 ```
-axios.delete('/api/bloodsugar/{id}');
+axios.delete('/api/users/bloodsugar/{id}');
 ```
 
 ### Success Response
@@ -130,11 +130,11 @@ HTTP/1.1 400
 ```
 # Insulin
 
-## GET /api/insulin/{id}
+## GET /api/users/insulin/{id}
 
 
 
-	GET /api/insulin/:id
+	GET /api/users/insulin/:id
 
 
 ### Examples
@@ -142,7 +142,7 @@ HTTP/1.1 400
 Request
 
 ```
-axios.get('/api/insulin/{id}');
+axios.get('/api/users/insulin/{id}');
 ```
 
 ### Success Response
@@ -162,11 +162,11 @@ Response
        }...
    ]
 ```
-## POST /api/insulin
+## POST /api/users/insulin
 
 
 
-	POST /api/insulin
+	POST /api/users/insulin
 
 
 ### Examples
@@ -174,7 +174,7 @@ Response
 Request
 
 ```
-axios.post('/api/insulin');
+axios.post('/api/users/insulin');
 ```
 
 ### Success Response
@@ -197,11 +197,11 @@ HTTP/1.1 400
     "message":"User does not exist"
 }
 ```
-## DELETE /api/insulin/:id
+## DELETE /api/users/insulin/:id
 
 
 
-	DELETE /api/insulin/:id
+	DELETE /api/users/insulin/:id
 
 
 ### Examples
@@ -209,7 +209,7 @@ HTTP/1.1 400
 Request
 
 ```
-axios.delete('/api/insulin/{id}');
+axios.delete('/api/users/insulin/{id}');
 ```
 
 ### Success Response

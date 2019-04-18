@@ -4,7 +4,7 @@
     "description": "Databetes API docs",
     "title": "Api Documentation",
     "url": "http://localhost:3333",
-    "sampleUrl": "https://databetes-development.herokuapp.com",
+    "sampleUrl": "https://glucose-iq.herokuapp.com",
     "header": {
         "title": "Databetes Manager",
         "filename": "./apidocs/header.md"

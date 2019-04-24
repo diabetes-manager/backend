@@ -17,10 +17,12 @@
     "apidoc": "^0.17.7",
     "apidoc-markdown": "^0.2.1",
     "aws-amplify": "^1.1.26",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "helmet": "^3.16.0",
+    "jsonwebtoken": "^8.5.1",
     "knex": "^0.16.5",
     "npm-run-all": "^4.1.5",
     "pg": "^7.9.0",
@@ -33,6 +35,6 @@
     "supertest": "^4.0.2"
   },
   "jest": {
-		"testEnvironment": "node"
-	}
+    "testEnvironment": "node"
+  }
 }

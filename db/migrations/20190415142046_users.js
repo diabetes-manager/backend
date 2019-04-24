@@ -4,6 +4,8 @@ exports.up = function(knex) {
         user.increments();
         user.string('username', 255).notNullable();
 
+        user.string('password', 255).notNullable();
+
         user.integer('bg_high').notNullable();
 
         user.integer('bg_low').notNullable();

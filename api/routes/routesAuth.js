@@ -18,8 +18,30 @@ const errors = { // J.Pinkman Dynamic error messaging based on sqlite codes
 
 
 
-
-// POST /api/auth/register
+/**
+ * @api {post} /api/auth/register    POST /api/auth/register
+ * @apiVersion 1.0.0
+ * @apiName Register User
+ * @apiGroup Basic Auth
+ *
+ * @apiExample Request
+ * axios.post('/api/auth/register');
+ *
+ * @apiSuccess {id} id            User Id
+ * @apiSuccess {string} username            Username required in body of post
+ * @apiSuccess {string} password            Password required in body of post
+ * @apiSuccess {number} bg_high            Intial bg_high must be set (subject to change)
+ * @apiSuccess {number} bg_low            Intial bg_low must be set (subject to change)
+ * 
+ * @apiSuccessExample {json} Response
+ * 
+ *  {
+        "message": "User Added",
+        "id": 6
+ *  }
+*
+*
+*/
 server.post('/register', async (req, res) => {
     if(!req.body.username || !req.body.bg_high || !req.body.bg_low || !req.body.password) {
         return res.status(400).json({ message:"Please include username, password, bg high and bg low" })
@@ -43,7 +65,29 @@ server.post('/register', async (req, res) => {
 
 
 
-
+/**
+ * @api {post} /api/auth/login    POST /api/auth/login
+ * @apiVersion 1.0.0
+ * @apiName Login User
+ * @apiGroup Basic Auth
+ *
+ * @apiExample Request
+ * axios.post('/api/auth/login');
+ *
+ * @apiSuccess {id} id            User Id
+ * @apiSuccess {string} username            Username required in body of post
+ * @apiSuccess {string} password            Password required in body of post
+ * @apiSuccess {string} token            In response, a token is returned
+ * 
+ * @apiSuccessExample {json} Response
+ * 
+ *  {
+        "message": "Welcome {username}!",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0Ijo2LCJ1c2VybmFtZSI6IkRlbHRhMSIsImlhdCI6MTU1NjA5MTU3MSwiZXhwIjoxNTU2MTc3OTcxfQ.-EbF7C5GjYR2A05Yl7pi43SId7t0LXMnmXe2IhNKf84"
+ *  }
+*
+*
+*/
 // POST /api/auth/login
 server.post('/login', async (req, res) => {
     if (!req.body.username || !req.body.password) {

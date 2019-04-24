@@ -2,6 +2,10 @@
 
 Databetes API docs
 
+- [Basic_Auth](#basic_auth)
+	- [POST /api/auth/login](#post-/api/auth/login)
+	- [POST /api/auth/register](#post-/api/auth/register)
+	
 - [Bloodsugar](#bloodsugar)
 	- [GET /api/users/bloodsugar/{id}](#get-/api/users/bloodsugar/{id})
 	- [POST /api/users/bloodsugar](#post-/api/users/bloodsugar)
@@ -25,6 +29,60 @@ Databetes API docs
 	
 
 
+# Basic_Auth
+
+## POST /api/auth/login
+
+
+
+	POST /api/auth/login
+
+
+### Examples
+
+Request
+
+```
+axios.post('/api/auth/login');
+```
+
+### Success Response
+
+Response
+
+```
+
+{
+       "message": "Welcome {username}!",
+       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0Ijo2LCJ1c2VybmFtZSI6IkRlbHRhMSIsImlhdCI6MTU1NjA5MTU3MSwiZXhwIjoxNTU2MTc3OTcxfQ.-EbF7C5GjYR2A05Yl7pi43SId7t0LXMnmXe2IhNKf84"
+}
+```
+## POST /api/auth/register
+
+
+
+	POST /api/auth/register
+
+
+### Examples
+
+Request
+
+```
+axios.post('/api/auth/register');
+```
+
+### Success Response
+
+Response
+
+```
+
+{
+       "message": "User Added",
+       "id": 6
+}
+```
 # Bloodsugar
 
 ## GET /api/users/bloodsugar/{id}
